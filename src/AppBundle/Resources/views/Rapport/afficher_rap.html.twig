@@ -32,6 +32,9 @@
                     {{ form_end(form)}}
             </div>
         </div>
+
+        </br>
+
         <div class="row">
 
             <div class="col-xs-12">
@@ -46,7 +49,7 @@
                     </thead>
                     <tbody>
                         {% for article in articles %}
-                            {# {{ dump(annonce)}} #}
+                            {# {{ dump(article)}} #}
                             <tr>
                                 <td class="text-center"><a id="" class=" btn" href="/page_article/{{ article.title }}">{{ article.title }}</a></td>
                                 <td class="text-center">{{ article.description }}</td>

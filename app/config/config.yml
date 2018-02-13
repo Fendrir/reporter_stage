@@ -8,6 +8,8 @@ imports:
 parameters:
     locale: fr
     app.path.annonces_images: /uploads/photos/annonces
+    app.path.user_contracts: /uploads/files/user/contracts
+
 
 framework:
     #esi: ~
@@ -160,6 +162,7 @@ easy_admin:
                     - email
                     - lastLogin
                     - confirmationToken
+                    - contract
             list:
                 fields:
                     - username
@@ -168,6 +171,7 @@ easy_admin:
                     - email
                     - lastLogin
                     - confirmationToken
+                    - { property: 'contract', template: 'contract.html.twig' }
 
         Article:
             class: AppBundle\Entity\Article
@@ -192,3 +196,7 @@ vich_uploader:
             uri_prefix: /uploads/photos/article
             upload_destination: '%kernel.root_dir%/../web/uploads/photos/article'
             namer: vich_uploader.namer_uniqid
+
+        user_contracts:
+            uri_prefix: '%app.path.user_contracts%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/files/user/contracts'
