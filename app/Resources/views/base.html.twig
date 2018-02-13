@@ -18,7 +18,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li id="id_li_Accueil" class=""><a href="{{ path('homepage') }}">Accueil<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Rapport quotidien</a></li>
+                    <li><a href="{{ path('app_rapport_afficherrap') }}">Rapport quotidien</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted('ROLE_ADMIN') %}
