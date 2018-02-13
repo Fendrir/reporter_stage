@@ -48,7 +48,7 @@
                         {% for article in articles %}
                             {# {{ dump(annonce)}} #}
                             <tr>
-                                <td class="text-center"><a id="" class=" btn" href="/annonces/pageAnnonce/{{ article.title }}">{{ article.title }}</a></td>
+                                <td class="text-center"><a id="" class=" btn" href="/page_article/{{ article.title }}">{{ article.title }}</a></td>
                                 <td class="text-center">{{ article.description }}</td>
                                 <td class="text-center"><img class="img_cadre" src="{{ vich_uploader_asset(article, 'photoFile') }}" alt="photo_article"></td>
                             </tr>

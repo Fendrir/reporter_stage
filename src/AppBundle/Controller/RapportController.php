@@ -47,4 +47,17 @@ class RapportController extends Controller
         ));
     }
 
+    /**
+     * @Route("/page_article/{article_page}")
+     */
+    public function ArticlePageAction($article_page)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article_page = $em->getRepository("AppBundle:Article")->findOneByTitle($article_page);
+
+        return $this->render('AppBundle:Rapport:rapport_page.html.twig', array(
+            "article_page" => $article_page,
+        ));
+    }
+
 }
