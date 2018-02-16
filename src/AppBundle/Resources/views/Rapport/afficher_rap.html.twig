@@ -51,29 +51,22 @@
                     <tbody>
                     <style>
                     </style>
+                    
                         {% for article in articles %}
-                            {# {{ dump(article)}} #}
+
                             <tr>
                                 <td class="text-center"><a id="" class=" btn" href="/page_article/{{ article.title }}">{{ article.title }}</a></td>
                                 <td class="text-center">{{ article.description }}</td>
 
                                 {% if article.photo is null %}
-
                                     <td class="text-center">Aucune photos</td>
-                                
                                 {% else %}
-                                    
                                     <td class="text-center"><img class="img_cadre" src="{{ vich_uploader_asset(article, 'photoFile') }}" alt="photo_article"></td>
-
                                 {% endif %}
 
-
                                 {% if article.articlepdf is null %}
-
                                     <td class="text-center">Aucun fichier PDF</td>
-                                
                                 {% else %}
-                                    
                                     <td class="text-center">
                                         <!-- Trigger the modal with a button -->
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{ article.id }}">Fichier PDF</button>
@@ -100,8 +93,6 @@
                                         </div>
                                     </td>
                                 {% endif %}
-                                
-                                
                             </tr>
                         {% endfor %}
                     </tbody>
