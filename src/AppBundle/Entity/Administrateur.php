@@ -5,15 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Administrateur
  *
  * @ORM\Table(name="adm_administrateur")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AdministrateurRepository")
- * @Vich\Uploadable
  */
 class Administrateur extends BaseUser
 {
@@ -39,18 +36,6 @@ class Administrateur extends BaseUser
      * @ORM\Column(name="adm_phoneNumber", type="string", length=255, nullable=true)
      */
     private $phoneNumber;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
-     */
-    private $contract;
-
-    /**
-     * @Vich\UploadableField(mapping="user_contracts", fileNameProperty="contract")
-     * @var File
-     */
-    private $contractFile;
 
 
     /**

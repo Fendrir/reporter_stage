@@ -41,7 +41,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
     private $photo;
 
@@ -63,6 +63,18 @@ class Article
      * @ORM\JoinColumn(name="adm_id", referencedColumnName="adm_id")
      */
     private $administrateur;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $articlepdf;
+
+    /**
+     * @Vich\UploadableField(mapping="articlepdf", fileNameProperty="articlepdf")
+     * @var File
+     */
+    private $articlepdfFile;
 
 
     /**
@@ -211,5 +223,47 @@ class Article
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set articlepdf
+     *
+     * @param string $articlepdf
+     *
+     * @return Article
+     */
+    public function setArticlepdf($articlepdf)
+    {
+        $this->articlepdf = $articlepdf;
+
+        return $this;
+    }
+
+    /**
+     * Get articlepdf
+     *
+     * @return string
+     */
+    public function getArticlepdf()
+    {
+        return $this->articlepdf;
+    }
+
+    public function setArticlepdfFile(File $articlepdf = null)
+    {
+        $this->articlepdfFile = $articlepdf;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($articlepdf) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getArticlepdfFile()
+    {
+        return $this->articlepdfFile;
     }
 }

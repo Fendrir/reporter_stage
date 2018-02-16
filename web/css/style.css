@@ -4,3 +4,13 @@
     width: 250px;
 
 }
+.toto{
+    display: block;
+    margin:0 auto 0 auto;
+    width:100px;
+    height:100px;
+    background-image:url();
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position: center;
+}

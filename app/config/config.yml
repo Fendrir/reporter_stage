@@ -7,8 +7,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    app.path.annonces_images: /uploads/photos/annonces
-    app.path.user_contracts: /uploads/files/user/contracts
+    app.path.article_photos: /uploads/photos/article
+    app.path.article_pdf: /uploads/pdf/article
 
 
 framework:
@@ -162,7 +162,6 @@ easy_admin:
                     - email
                     - lastLogin
                     - confirmationToken
-                    - contract
             list:
                 fields:
                     - username
@@ -171,7 +170,6 @@ easy_admin:
                     - email
                     - lastLogin
                     - confirmationToken
-                    - { property: 'contract', template: 'contract.html.twig' }
 
         Article:
             class: AppBundle\Entity\Article
@@ -180,12 +178,14 @@ easy_admin:
                 fields:
                     - title
                     - { property: 'photoFile', type: 'vich_image', help: 'Taille max 1.5Mo / Format .jpeg et .png' }
+                    - { property: 'articlepdfFile', type: 'vich_file', help: 'Ne mettre que les fichiers de format pdf ici'}
                     - description
                     - administrateur
             list:
                 fields:
                     - title
                     - { property: 'photo', type: 'image', base_path: '/uploads/photos/article' }
+                    - { property: 'articlepdf', type: 'vich_file', base_path: '/uploads/pdf/article'}
                     - description
                     - administrateur
 
@@ -197,6 +197,7 @@ vich_uploader:
             upload_destination: '%kernel.root_dir%/../web/uploads/photos/article'
             namer: vich_uploader.namer_uniqid
 
-        user_contracts:
-            uri_prefix: '%app.path.user_contracts%'
-            upload_destination: '%kernel.root_dir%/../web/uploads/files/user/contracts'
+        articlepdf:
+            uri_prefix: /uploads/pdf/article
+            upload_destination: '%kernel.root_dir%/../web/uploads/pdf/article'
+            namer: vich_uploader.namer_uniqid
