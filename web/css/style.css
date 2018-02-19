@@ -4,7 +4,7 @@
     width: 250px;
 
 }
-.toto{
+/* .toto{
     display: block;
     margin:0 auto 0 auto;
     width:100px;
@@ -13,4 +13,46 @@
     background-repeat:no-repeat;
     background-size: 100%;
     background-position: center;
+} */
+
+/* .row [class^="col-"] {
+    
+    
+    background-color: #eee;
+    border: 1px solid #ddd;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+} */
+
+.div_text{
+
+    border-right: 2px solid #111;
+
+}
+
+.zone_annexe{
+
+    border-left: 2px solid #111;
+    border-bottom: 2px solid #111;
+    padding-top: 15px;
+
+}
+
+h3{
+
+    background-color: rgba(253, 144, 19, 0.521);
+    border-radius: 25px;
+
+}
+
+.photo_area{
+
+    padding-bottom: 15px;
+
+}
+
+.pdf_area{
+
+    padding-bottom: 15px;
+
 }
