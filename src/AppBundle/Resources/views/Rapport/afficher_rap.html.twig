@@ -57,7 +57,7 @@
                                 <td class="text-center"><a id="" class=" btn" href="/page_article/{{ article.title }}">{{ article.title }}</a></td>
 
                                 {% if article.photo is null %}
-                                    <td class="text-center">Aucune photos</td>
+                                    <td class="text-center">Aucune photo</td>
                                 {% else %}
                                     <td class="text-center"><img class="img_cadre" src="{{ vich_uploader_asset(article, 'photoFile') }}" alt="photo_article"></td>
                                 {% endif %}
