@@ -28,6 +28,30 @@
                             <p class="text-center">Aucune photos</p>
                         {% else %}
                             <img class="img_cadre" src="{{ vich_uploader_asset(article_page, 'photoFile') }}" alt="photo_article">
+
+                            <!-- Trigger the modal with a button -->
+                            <button id="photo_data_target" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="">Apperçue image</button>
+                            <!-- Modal -->
+                            <div id="test_photo_target" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Apperçue image de l'article {{ article_page.title }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <img class="img_cadre_lg" src="{{ vich_uploader_asset(article_page, 'photoFile') }}" alt="photo_article">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         {% endif %}
                     </div>
 
