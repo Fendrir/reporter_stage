@@ -2,13 +2,22 @@
 
     height: 150px;
     width: 250px;
-
+    padding: auto;
+    margin: auto;
 }
 
 .img_cadre_lg{
 
     height: 300px;
     width: 500px;
+
+}
+
+.img_cadre_page_seule{
+
+    height: 150px;
+    width: 250px;
+    padding-bottom: 15px;
 
 }
 
@@ -43,6 +52,7 @@
     border-left: 2px solid #111;
     border-bottom: 2px solid #111;
     padding-top: 15px;
+    margin-left: -15px;
 
 }
 
@@ -62,5 +72,30 @@ h3{
 .pdf_area{
 
     padding-bottom: 15px;
+
+}
+
+p{
+
+    margin:15px;
+
+}
+
+.btn-return{
+
+    margin: auto 15px auto 15px;
+    padding: 5px 5px 5px 5px;
+
+}
+
+.sub_div_tab{
+
+    padding: 15px;
+
+}
+
+.description{
+
+    border-left: 1px solid #111;
 
 }
