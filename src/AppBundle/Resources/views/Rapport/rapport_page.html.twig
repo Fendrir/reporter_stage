@@ -28,29 +28,30 @@
                             <p class="text-center">Aucune photo</p>
                         {% else %}
                             <img class="img_cadre_page_seule" src="{{ vich_uploader_asset(article_page, 'photoFile') }}" alt="photo_article">
-
-                            <!-- Trigger the modal with a button -->
-                            <button id="photo_data_target" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="">Aperçu image</button>
-                            <!-- Modal -->
-                            <div id="test_photo_target" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Aperçu image de l'article {{ article_page.title }}</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <img class="img_cadre_lg" src="{{ vich_uploader_asset(article_page, 'photoFile') }}" alt="photo_article">
+                            <aside class="col-md-12 text-center">
+                                <!-- Trigger the modal with a button -->
+                                <button type="button" class="btn btn-info btn-lg btn_espace" data-toggle="modal" data-target="#img_{{ article_page.id }}">Aperçu image</button>
+                                <!-- Modal -->
+                                <div id="img_{{ article_page.id }}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Aperçu image de l'article {{ article_page.title }}</h4>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <img class="img_cadre_lg" src="{{ vich_uploader_asset(article_page, 'photoFile') }}" alt="photo_article">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </aside>
                         {% endif %}
                     </div>
 
@@ -60,9 +61,9 @@
                             <p class="text-center">Aucun fichier PDF</p>
                         {% else %}
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{ article_page.id }}">Fichier PDF</button>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#pdf_{{ article_page.id }}">Fichier PDF</button>
                             <!-- Modal -->
-                            <div id="{{ article_page.id }}" class="modal fade" role="dialog">
+                            <div id="pdf_{{ article_page.id }}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -90,8 +91,10 @@
 
         {% endif %}
         <div class="btn-return">
+            <hr>
             <form>
-                <button class="btn btn-warning" type="button" onclick="history.go(-1)">Revenir</button>
+                <button class="btn btn-warning" type="button" onclick="history.go(-1)">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Revenir</button>
             </form>
         </div>
     </div>

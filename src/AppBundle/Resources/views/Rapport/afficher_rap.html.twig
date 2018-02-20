@@ -35,69 +35,6 @@
 
         </br>
 
-        <div class="row">
-
-            <div class="col-xs-12">
-
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Titre</th>
-                            <th class="text-center">Image</th>
-                            <th class="text-center">Fichier pdf</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <style>
-                    </style>
-                    
-                        {% for article in articles %}
-
-                            <tr>
-                                <td class="text-center"><a id="" class=" btn" href="/page_article/{{ article.title }}">{{ article.title }}</a></td>
-
-                                {% if article.photo is null %}
-                                    <td class="text-center">Aucune photo</td>
-                                {% else %}
-                                    <td class="text-center"><img class="img_cadre" src="{{ vich_uploader_asset(article, 'photoFile') }}" alt="photo_article"></td>
-                                {% endif %}
-
-                                {% if article.articlepdf is null %}
-                                    <td class="text-center">Aucun fichier PDF</td>
-                                {% else %}
-                                    <td class="text-center">
-                                        <!-- Trigger the modal with a button -->
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{ article.id }}">Fichier PDF</button>
-                                        <!-- Modal -->
-                                        <div id="{{ article.id }}" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">Fichier PDF</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div>
-                                                                <object data="{{ vich_uploader_asset(article, 'articlepdfFile') }}" type="application/pdf" width="100%" height="650">
-                                                                </object>
-                                                            </div>
-                                                        </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                {% endif %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
 {# new template #}
 
         <div class="row">
@@ -107,29 +44,53 @@
                 <div class="col-md-12">
                     <div class=" panel panel-danger">
                         <div class="panel-heading">
-                            <h4 class="panel-title text-center"><a id="" class="" href="/page_article/{{ article.title }}">{{ article.title }}</a></h4>
+                            <h4 class="panel-title text-center"><a id="" class="" href="/page_article/{{ article.title }}">
+                            <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> {{ article.title }}</a></h4>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="row sub_div_tab">
-                                        <div class="col-md-12 text-center">
+                                        <aside class="col-md-12 text-center photo_area">
+                                            <h3>Annexes</h3>
                                             {% if article.photo is null %}
-                                                <p class="text-center">Aucune photo</p>
+                                                <p class="">Aucune photo</p>
                                             {% else %}
                                                 <img class="img_cadre" src="{{ vich_uploader_asset(article, 'photoFile') }}" alt="photo_article">
+                                                <aside class="col-md-12 text-center">
+                                                    <!-- Trigger the modal with a button -->
+                                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#img_{{ article.id }}">Aperçu image</button>
+                                                    <!-- Modal -->
+                                                    <div id="img_{{ article.id }}" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title">Aperçu image de l'article {{ article.title }}</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div>
+                                                                        <img class="img_cadre_lg" src="{{ vich_uploader_asset(article, 'photoFile') }}" alt="photo_article">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </aside>
                                             {% endif %}
-                                        </div>
-                                    </div>
-                                    <div class="row sub_div_tab">
-                                        <div class="col-md-12 text-center">
+                                        </aside>
+                                        <aside class="col-md-12 text-center pdf_area">
                                             {% if article.articlepdf is null %}
                                                 <p class="text-center">Aucun fichier PDF</p>
                                             {% else %}
                                                 <!-- Trigger the modal with a button -->
-                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{ article.id }}">Fichier PDF</button>
+                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#pdf_{{ article.id }}">Fichier PDF</button>
                                                 <!-- Modal -->
-                                                <div id="{{ article.id }}" class="modal fade" role="dialog">
+                                                <div id="pdf_{{ article.id }}" class="modal fade" role="dialog">
                                                     <div class="modal-dialog">
                                                         <!-- Modal content-->
                                                         <div class="modal-content">
@@ -150,19 +111,24 @@
                                                     </div>
                                                 </div>
                                             {% endif %}
-                                        </div>
+                                        </aside>
                                     </div>
                                 </div>
-                                <div class="col-md-8 description">
-                                    <p class="text-justify">{{ article.description }}</p>
+                                <div class="col-md-8">
+                                    <h3 class="text-center">Description</h3>
+                                    <div class="description">
+                                    <blockquote>
+                                        <p class="text-justify">{{ article.description }}</p>
+                                    </blockquote>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-
         </div>
     </div>
+
 {% endblock %}
 

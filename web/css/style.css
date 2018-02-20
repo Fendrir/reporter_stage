@@ -2,7 +2,7 @@
 
     height: 150px;
     width: 250px;
-    padding: auto;
+    padding-bottom: 15px;
     margin: auto;
 }
 
@@ -10,6 +10,7 @@
 
     height: 300px;
     width: 500px;
+    padding-bottom: 15px;
 
 }
 
@@ -33,7 +34,6 @@
 } */
 
 /* .row [class^="col-"] {
-    
     
     background-color: #eee;
     border: 1px solid #ddd;
@@ -90,12 +90,24 @@ p{
 
 .sub_div_tab{
 
-    padding: 15px;
+    padding: auto 15px auto 15px;
+    
+}
 
+blockquote{
+    
+    border-color:  rgba(253, 144, 19, 0.5);
+    
 }
 
 .description{
+    
+    padding-left: 20px;
 
-    border-left: 1px solid #111;
+}
+
+.btn_espace{
+
+    margin-bottom: 15px;
 
 }
