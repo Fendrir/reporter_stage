@@ -1,15 +1,42 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block body %}
 
-{% block body %}
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-                <h1>Je suis un super titre de la page d'accueil</h1>
+            <h1 class="text-center">Arpasys Store</h1>
+            <h4 class="text-center">http://store.arpasys.com/</h4>
+
+            <h3 class="text-center">Présentation de l'entreprise</h3>
+
+            <div class="text-justify">
+
+                <div>
+
+                    <img class="img_index thumbnail" src="{{ asset('Images_arpasys/IMG_0059.JPG') }}" alt="img_arpasys">
+
+                    <p>En 2006, Ouverture la société Arpasys, une entreprise spécialisée dans la conception de logiciels informatiques
+                        et développement d’applications hébergées.</p>
+
+                    <p>Conçoit et développe des outils pour la diffusion audiovisuelle, à l’origine de plusieurs technologies
+                        innovantes.</p>
+
+                    <p>Elabore la 3D Temps Réel dans le cadre d’une diffusion dynamique haute définition, permettant d’afficher
+                        des objets 3D paramétrables en direct, de servir de contenant de médias (streaming, vidéo, images,
+                        animations Flash…) ou de créer des inscrustations sur de la vidéo .</p>
+
+                    <p>Développe l’architecture réseau et les transferts sécurisés de traitements des échanges utilisateurs
+                        – afficheurs, pour des diffusions à petites (locales) ou très grandes échelles (internationnales).</p>
+
+                    <p>Analyse les besoins et les interactions avec l’outil informatique afin de concevoir des IHM (Interfaces
+                        Homme-Machine) simples d’utilisation, tout en proposant une grande palette d’options, et étudiées
+                        pour une utilisation conventionnelle (clavier / souris) ou uniquement tactile.</p>
+                </div>
 
             </div>
+
         </div>
     </div>
+</div>
 
 {% endblock %}
