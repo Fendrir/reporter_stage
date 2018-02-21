@@ -1,4 +1,40 @@
-body .container, .nav, .navbar, .navbar-inverse{
+body{
+
+    background-image:url(../Images_arpasys/metal_patern.jpg);
+    background-repeat: repeat;
+
+}
+
+/* refonte du panel-warning */
+
+.panel-body{
+
+    background-color: rgba(253, 144, 19, 0.15);
+
+}
+
+.panel-warning {
+    border-color: rgba(253, 144, 100, 0.6);
+  }
+  .panel-warning > .panel-heading {
+    color: #ad531e;
+    background-color: rgba(253, 144, 19, 0.8);
+    border-color: rgba(253, 144, 100, 0.6);
+  }
+  .panel-warning > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: rgba(253, 144, 100, 0.6);
+  }
+  .panel-warning > .panel-heading .badge {
+    color: rgba(253, 144, 19, 0.8);
+    background-color: #ad531e;
+  }
+  .panel-warning > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: rgba(253, 144, 100, 0.6);
+  }
+
+  /* fin de la refonte du panel-warning */
+  
+.container, .nav, .navbar, .navbar-inverse{
 
     background:
         linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
@@ -89,7 +125,7 @@ body .container, .nav, .navbar, .navbar-inverse{
 
 h3{
 
-    background-color: rgba(253, 144, 19, 1);
+    background-color: rgba(253, 144, 19, 0.8);
     border-radius: 25px;
 
 }
@@ -115,7 +151,7 @@ p{
 .btn-return{
 
     margin: auto 15px auto 15px;
-    padding: 5px 5px 5px 5px;
+    padding: 15px 15px 15px 15px;
 
 }
 
