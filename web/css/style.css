@@ -9,7 +9,7 @@ body{
 
 .panel-body{
 
-    background-color: rgba(253, 144, 19, 0.15);
+    background-color: #c73f153d;
 
 }
 
@@ -17,12 +17,12 @@ body{
     border-color: rgba(253, 144, 100, 0.6);
   }
   .panel-warning > .panel-heading {
-    color: #ad531e;
-    background-color: rgba(253, 144, 19, 0.8);
-    border-color: rgba(253, 144, 100, 0.6);
+    color: #c73e15;
+    background-color: rgba(253, 144, 19, 1);
+    border-color: #c73e15;
   }
   .panel-warning > .panel-heading + .panel-collapse > .panel-body {
-    border-top-color: rgba(253, 144, 100, 0.6);
+    border-top-color: rgba(253, 144, 100, 1);
   }
   .panel-warning > .panel-heading .badge {
     color: rgba(253, 144, 19, 0.8);
@@ -125,7 +125,7 @@ body{
 
 h3{
 
-    background-color: rgba(253, 144, 19, 0.8);
+    background-color: rgba(253, 144, 19, 1);
     border-radius: 25px;
 
 }
