@@ -24,6 +24,11 @@ class RapportController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('AppBundle:Article')->findAll();
+        $articles = $this->get('knp_paginator')->paginate(
+            $articles,
+            $request->query->get('page', 1)/* le numéro de la page à afficher*/,
+                5 /* le nombre d'éléments par page */
+        );
 
         $form = $this->createFormBuilder()
         ->add('recherche', Searchtype::class, array('required' => false,
@@ -44,6 +49,7 @@ class RapportController extends Controller
         return $this->render('AppBundle:Rapport:afficher_rap.html.twig', array(
             "articles" => $articles,
             'form' => $form->createView(),
+            // 'pagination' => $pagination,
         ));
     }
 
