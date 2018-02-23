@@ -17,20 +17,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RapportController extends Controller
 {
+    const perPage = 5;
+
     /**
      * @Route("/rapport")
      */
     public function AfficherRapAction(Request $request)
     {
+        
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('AppBundle:Article')->findAll();
-        $articles = $this->get('knp_paginator')->paginate(
-            $articles,
-            $request->query->get('page', 1)/* le numéro de la page à afficher*/,
-                5 /* le nombre d'éléments par page */
-        );
 
         $form = $this->createFormBuilder()
+        ->setAction($this->generateUrl('app_rapport_afficherrap')) // me renvoyer sur un autre url que celui par défault
         ->add('recherche', Searchtype::class, array('required' => false,
         'label' => ' ',
         'attr' => array('placeholder' => 'Recherche')))
@@ -46,11 +45,21 @@ class RapportController extends Controller
             $articles = $query->getResult();
         }
 
+        // code de pagination du bundle knp_paginator
+
+        $paginator = $this->get('knp_paginator');
+
+        $paginatedArticles = $paginator->paginate(
+            $articles,
+            $request->query->getInt('page',1), self::perPage
+        );
+
+
         return $this->render('AppBundle:Rapport:afficher_rap.html.twig', array(
-            "articles" => $articles,
+            "articles" => $paginatedArticles,
             'form' => $form->createView(),
-            // 'pagination' => $pagination,
         ));
+
     }
 
     /**
