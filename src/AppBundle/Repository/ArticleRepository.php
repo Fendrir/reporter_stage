@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+
 /**
  * ArticleRepository
  *
@@ -10,4 +11,16 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getSearchTitle()
+    {
+        
+            return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM AppBundle\Entity\Article AS a 
+                WHERE a.title LIKE :p'
+            );
+
+    }
+
 }

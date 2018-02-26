@@ -29,20 +29,24 @@ class RapportController extends Controller
         $articles = $em->getRepository('AppBundle:Article')->findAll();
 
         $form = $this->createFormBuilder()
-        ->setAction($this->generateUrl('app_rapport_afficherrap')) // me renvoyer sur un autre url que celui par défault
-        ->add('recherche', Searchtype::class, array('required' => false,
-        'label' => ' ',
-        'attr' => array('placeholder' => 'Recherche')))
-        ->getForm();
+            ->setAction($this->generateUrl('app_rapport_afficherrap')) // me renvoyer sur un autre url que celui par défault
+            ->add(
+                'recherche', Searchtype::class, array('required' => false,
+                'label' => ' ',
+                'attr' => array('placeholder' => 'Recherche')))
+            ->getForm();
         $form->handlerequest($request);
 
         if($form->isValid() && $form->isSubmitted()){
+
             $data = $form->getData();
             $parameter = $data['recherche'];
-            $query = $em->createQuery("select a from 
-            AppBundle\Entity\Article as a where a.title like :p")
-            ->setParameters(['p' => '%' . $parameter . '%']);
+            $query = $em
+                ->getRepository('AppBundle:Article')
+                ->getSearchTitle()
+                ->setParameters(['p' => '%' . $parameter . '%']);
             $articles = $query->getResult();
+
         }
 
         // code de pagination du bundle knp_paginator
