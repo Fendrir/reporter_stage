@@ -7,6 +7,8 @@ use AppBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use AppBundle\Form\SearchFormType;
+
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,13 +30,13 @@ class RapportController extends Controller
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('AppBundle:Article')->findAll();
 
-        $form = $this->createFormBuilder()
-            ->setAction($this->generateUrl('app_rapport_afficherrap')) // me renvoyer sur un autre url que celui par défault
-            ->add(
-                'recherche', Searchtype::class, array('required' => false,
-                'label' => ' ',
-                'attr' => array('placeholder' => 'Recherche')))
-            ->getForm();
+        $form = $this->createForm(
+            SearchFormType::class, 
+            array(
+                'action' => $this->generateUrl('app_rapport_afficherrap')
+            )
+        );
+        
         $form->handlerequest($request);
 
         if($form->isValid() && $form->isSubmitted()){
